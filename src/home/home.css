@@ -1,0 +1,49 @@
+
+.home {
+  background-color: #282c34;
+}
+
+.homeHeader {
+  font-size: calc(10px + 2vmin);
+  color: white;
+  text-align: center;
+}
+
+.searchDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.inputBox {
+  width: 70%;
+  height: 30px;
+  font-size: 18px;
+}
+
+.employeeList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.employee {
+  width: 70%;
+  font-size: 18px;
+  color: #fff;
+}
+
+.employee  th {
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.lnkRouter {
+  color: #fff;
+  cursor: pointer;
+}
