@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Home from "../home";
 import About from "../About";
+import Detail from "../Detail";
 
 export default function App() {
   return (
@@ -29,6 +30,9 @@ export default function App() {
           <Route path="/about">
             <About />
           </Route>
+          <Route path="/detail">
+            <Detail />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
@@ -37,3 +41,4 @@ export default function App() {
     </Router>
   );
 }
+

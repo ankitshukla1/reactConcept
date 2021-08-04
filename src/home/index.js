@@ -18,29 +18,51 @@ var Home = () => {
 
   const search = (searchTextValue) => {
     const searchedEmp = employee.filter((emp) => {
-      console.log(emp.name.search(searchTextValue));
       return emp.name.toLowerCase().includes(searchTextValue);
     })
     setSearchedEmployee(searchedEmp);
   }
 
   const searchEmployee = (event) => {
-    console.log(event.target.value);
     search(event.target.value);
     setSearchText(event.target.value);
   }
 
-  const goToDetail = (empId) => {
-    history.push(`/about`, { id:  empId});
+  const goToDetail = (empData) => {
+    history.push("/detail", empData);
   }
 
   useEffect(() => {
-    console.log('useEffectHome');
     getEmployeeList();
     return () => {
       console.log('cleanUphome');
     }
   }, [])
+
+  const EmpList = () => {
+    if(searchText.length > 0) {
+      return (
+        <tbody>
+          {searchedEmployee.map((emp, index) => (
+            <tr key={index.toString()}>
+              <td>{emp.id}</td>
+              <td className="lnkRouter" onClick={() => goToDetail(emp)}>{emp.name}</td>
+            </tr>
+          ))}
+        </tbody>
+      )
+    }
+    return (
+      <tbody>
+        {employee.map((emp, index) => (
+          <tr key={index.toString()}>
+            <td>{emp.id}</td>
+            <td className="lnkRouter" onClick={() => goToDetail(emp)}>{emp.name}</td>
+          </tr>
+        ))}
+      </tbody>
+    );
+  }
   
   return (
     <div className="home">
@@ -64,26 +86,7 @@ var Home = () => {
                 <th>Name</th>
               </tr>
             </thead>
-            {searchText.length > 0 ? (
-              <tbody>
-                {searchedEmployee.map((emp, index) => (
-                  <tr key={index.toString()}>
-                    <td>{emp.id}</td>
-                    <td className="lnkRouter" onClick={() => goToDetail(emp.id)}>{emp.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            ) : (
-              <tbody>
-                {employee.map((emp, index) => (
-                  <tr key={index.toString()}>
-                    <td>{emp.id}</td>
-                    <td className="lnkRouter" onClick={() => goToDetail(emp.id)}>{emp.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            )}
-            
+            <EmpList />
           </table>
       </div>
     </div>

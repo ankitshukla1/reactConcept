@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Route from './Route';
 import reportWebVitals from './reportWebVitals';
-import { createBrowserHistory } from 'history';
 
 ReactDOM.render(
-  <React.StrictMode history={createBrowserHistory()}>
+  <React.StrictMode>
     <Route />
   </React.StrictMode>,
   document.getElementById('root')
