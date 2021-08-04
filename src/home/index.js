@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
+import { debounce, throttle } from '../utils/utilFun';
 import './home.css';
 
 var Home = () => {
@@ -12,7 +13,6 @@ var Home = () => {
   const getEmployeeList = async() => {
     let res = await fetch('https://jsonplaceholder.typicode.com/users');
     let empList = await res.json();
-    console.log(empList);
     setEmployee(empList);
   };
 
@@ -24,8 +24,11 @@ var Home = () => {
   }
 
   const searchEmployee = (event) => {
-    search(event.target.value);
     setSearchText(event.target.value);
+    var searchEmployeeOnce = debounce(function() {
+      search(event.target.value)
+    }, 2000);
+    searchEmployeeOnce();
   }
 
   const goToDetail = (empData) => {
