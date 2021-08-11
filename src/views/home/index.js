@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
-import { debounce, throttle } from '../utils/utilFun';
+import { debounce } from '../../utils/utilFun';
+import FooterHOC from '../../HOC/Loader';
 import './home.css';
 
-var Home = () => {
+var InitialHome = () => {
   let history = useHistory();
 
   const [searchText, setSearchText] = useState('');
@@ -23,11 +24,12 @@ var Home = () => {
     setSearchedEmployee(searchedEmp);
   }
 
+
   const searchEmployee = (event) => {
     setSearchText(event.target.value);
     var searchEmployeeOnce = debounce(function() {
       search(event.target.value)
-    }, 2000);
+    }, 200);
     searchEmployeeOnce();
   }
 
@@ -95,5 +97,7 @@ var Home = () => {
     </div>
   );
 }
+
+const Home = FooterHOC(InitialHome, 'Home Footer');
 
 export default Home;

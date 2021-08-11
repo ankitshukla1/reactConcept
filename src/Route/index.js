@@ -5,15 +5,17 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Home from "../home";
-import About from "../About";
-import Detail from "../Detail";
+import Home from "../views/home";
+import About from "../views/About";
+import Detail from "../views/Detail";
+import ReducerHookExample from '../views/useReducerExample';
+import './idex.css';
 
 export default function App() {
   return (
     <Router>
       <div>
-        <nav>
+        <nav className="navBar">
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -21,22 +23,31 @@ export default function App() {
             <li>
               <Link to="/about">About</Link>
             </li>
+            <li>
+              <Link to="/reducer-example">Reducer Example</Link>
+            </li>
           </ul>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/detail">
-            <Detail />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <div className="container">
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/detail">
+              <Detail />
+            </Route>
+            <Route path="/reducer-example">
+              <ReducerHookExample />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+        
       </div>
     </Router>
   );

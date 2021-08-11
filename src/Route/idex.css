@@ -1,0 +1,9 @@
+.navBar {
+  width: 20%;
+  display: inline-block;
+}
+
+.container {
+  width: 80%;
+  display: inline-block;
+}
