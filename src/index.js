@@ -15,3 +15,10 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+// Find a suitable libray.
+// Fetching the json data.
+// Store the data in a state.
+// build bar chart component .
+// build the filter
